@@ -20,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
@@ -31,7 +32,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
-public  class MainActivity extends AppCompatActivity  {
+public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
 
     DrawerLayout drawerLayout;
@@ -134,25 +135,41 @@ public  class MainActivity extends AppCompatActivity  {
 
     }
 
-    @Override
+   /* @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         changeBg = (ImageButton) findViewById(R.id.changeBg);
         switch(item.getItemId()){
             case R.id.changeBg:
-                Log.d("Mytag", "Debug");
+
                 Toast.makeText(getApplicationContext(), "Photo", Toast.LENGTH_SHORT).show();
-                break;
+                return true;
 
             case R.id.change_pass:
 
                 Toast.makeText(getApplicationContext(), "Change password", Toast.LENGTH_SHORT).show();
-                break;
+                return true;
+
+            default: return super.onOptionsItemSelected(item);
         }
 
-        return true;
+
+        } */
+
+    public void showPopUp(View view){
+        PopupMenu popup = new PopupMenu(this, view);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.popup, popup.getMenu());
+        popup.show();
+    }
+
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch(item.getItemId()){
+            
         }
-
-
+        return false;
+    }
 }
 
 

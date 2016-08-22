@@ -25,6 +25,7 @@
         android:scaleType="fitXY"
         android:id="@+id/changeBg"
         android:layout_alignParentEnd="true"
+        android:onClick="showPopUp"
 
         />
 
