@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="180dp"
+
     >
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
         android:id="@+id/img_replace"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/ss"
+
+        />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:src="@drawable/cam"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/img_replace"
+        android:layout_alignParentRight="true"
         android:scaleType="fitXY"
+        android:id="@+id/changeBg"
+        android:layout_alignParentEnd="true"
+
         />
 
 </RelativeLayout>

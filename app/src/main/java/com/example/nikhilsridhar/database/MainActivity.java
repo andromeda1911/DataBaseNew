@@ -17,6 +17,7 @@ import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
@@ -38,6 +39,7 @@ public  class MainActivity extends AppCompatActivity  {
     NavigationView navigationView;
     FragmentTransaction fragmentTransaction;
     Toolbar toolbar;
+    ImageButton changeBg;
 
 
     SearchView sv;
@@ -46,6 +48,23 @@ public  class MainActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+     /*   changeBg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(MainActivity.this, changeBg);
+                popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
+
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(MainActivity.this,"You Clicked : " + item.getTitle(),Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
+
+                popup.show();
+            }
+        }); */
 
 
 
@@ -77,39 +96,16 @@ public  class MainActivity extends AppCompatActivity  {
 
 
 
-                drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
 
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
 
-                switch (item.getItemId()) {
-                    case R.id.home_id:
-                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.main_container, new HomeFragment());
-                        fragmentTransaction.commit();
-                        item.setChecked(true);
-                        drawerLayout.closeDrawers();
-                        break;
 
-                    case R.id.imgclk:
-                        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.main_container, new CameraFragment());
-                        fragmentTransaction.commit();
-                        item.setChecked(true);
-                        drawerLayout.closeDrawers();;
-                        break;
 
-                            }
-
-                return true;
-            }
-        });
     }
 
     @Override
@@ -128,7 +124,7 @@ public  class MainActivity extends AppCompatActivity  {
             Player p = new Player();
             p.setName("Employee" + i);
             p.setPos("Desig" + i);
-            p.setImg(R.mipmap.ic_launcher);
+            p.setImg(R.drawable.emp);
             players.add(p);
         }
 
@@ -138,7 +134,27 @@ public  class MainActivity extends AppCompatActivity  {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        changeBg = (ImageButton) findViewById(R.id.changeBg);
+        switch(item.getItemId()){
+            case R.id.changeBg:
+                Log.d("Mytag", "Debug");
+                Toast.makeText(getApplicationContext(), "Photo", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.change_pass:
+
+                Toast.makeText(getApplicationContext(), "Change password", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return true;
+        }
+
+
 }
+
 
 
 
