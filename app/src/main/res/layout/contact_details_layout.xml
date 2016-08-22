@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.nikhilsridhar.database.Details"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="234dp"
+        android:id="@+id/playerImage"
+        android:padding="10dp"
+        android:scaleType="center"
+        android:src="@mipmap/ic_launcher"
+        android:layout_weight="0.42"
+        android:layout_marginTop="88dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+    </ImageView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:id="@+id/nameTxt"
+        android:padding="10dp"
+
+        android:layout_below="@+id/playerImage"
+        android:layout_alignLeft="@+id/posTxt"
+        android:layout_alignStart="@+id/posTxt" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Position"
+        android:id="@+id/posTxt"
+        android:padding="10dp"
+        android:layout_below="@+id/nameTxt"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change pic!"
+        android:id="@+id/button_camera"
+        android:layout_below="@+id/posTxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp" />
+
+</RelativeLayout>
