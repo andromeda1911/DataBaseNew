@@ -45,10 +45,6 @@ public class Details extends AppCompatActivity  {
         tx_name.setText("Name : "+ getIntent().getIntExtra("nm", 00));
         tx_pos.setText("Position"+ getIntent().getIntExtra("ps", 00));
 
-
-
-
-
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
