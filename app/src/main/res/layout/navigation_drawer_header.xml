@@ -11,9 +11,8 @@
         android:id="@+id/img_replace"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:scaleType="centerInside"
-
-
+        android:scaleType="fitCenter"
+        android:src = "@drawable/schoolspeak"
         />
 
     <ImageButton
@@ -26,7 +25,17 @@
         android:id="@+id/changeBg"
         android:layout_alignParentEnd="true"
         android:onClick="showPopUp"
-
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="test@schoolspeak.com "
+        android:id="@+id/textView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

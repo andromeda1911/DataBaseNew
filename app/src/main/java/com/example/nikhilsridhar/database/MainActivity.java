@@ -1,14 +1,9 @@
 package com.example.nikhilsridhar.database;
 
-import android.app.Activity;
-import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -17,7 +12,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -38,7 +32,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.zip.Inflater;
 
@@ -51,35 +44,16 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     FragmentTransaction fragmentTransaction;
     Toolbar toolbar;
     ImageButton changeBg;
-    private static  final int PICK_IMAGE = 100;
-    Uri imageUri, image_Uri;
-    ImageView imgg1, imgg2;
-    private static final int TAKE_PICTURE = 1;
-
+    private static final int PICK_IMAGE = 100;
+    ImageView img1;
+    Uri imageUri;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     SearchView sv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        imgg1 = (ImageView) findViewById(R.id.img_replace);
-
-     /*   changeBg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PopupMenu popup = new PopupMenu(MainActivity.this, changeBg);
-                popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
-
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(MainActivity.this,"You Clicked : " + item.getTitle(),Toast.LENGTH_SHORT).show();
-                        return true;
-                    }
-                });
-
-                popup.show();
-            }
-        }); */
 
 
 
@@ -124,6 +98,14 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     }
 
     @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    @Override
 
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -139,16 +121,11 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
             Player p = new Player();
             p.setName("Employee" + i);
             p.setPos("Desig" + i);
-            p.setImg(R.drawable.emp);
+            p.setImg(R.drawable.contact);
             players.add(p);
         }
-
-
         return players;
-
-
     }
-
 
 
     public void showPopUp(View view){
@@ -159,68 +136,58 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         popup.show();
     }
 
-    public void onBackPressed(){
-        Intent a = new Intent(Intent.ACTION_MAIN);
-        a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(a);
-    }
-            @Override
+
+
+
+    @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch(item.getItemId()){
             case R.id.popup_gallery:
                 openGallery();
                 break;
             case R.id.popup_cam:
-                takePhoto();
+                dispatchTakePictureIntent();
                 break;
-            default:
-                return false;
+            case R.id.popup_remove:
+                removeImage();
+                break;
+
         }
-        return true;
+        return false;
+    }
+
+    private void removeImage(){
+        img1 = (ImageView) findViewById(R.id.img_replace);
+        img1.setImageResource(R.drawable.def);
+    }
+
+
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
     }
 
     private void openGallery(){
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);
-    }
 
+    }
     @Override
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK && requestCode==PICK_IMAGE){
+        img1 = (ImageView) findViewById(R.id.img_replace);
+;                super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE ){
             imageUri = data.getData();
-            imgg1.setImageURI(imageUri);
+            img1.setImageURI(imageUri);
         }
-    }
-
-    private void takePhoto(){
-        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-        File photo = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "picture.jpg");
-        image_Uri = Uri.fromFile(photo);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, image_Uri);
-        startActivityForResult(intent, TAKE_PICTURE);
-    }
-
-
-    protected void onActivityResult1(int requestCode, int resultCode, Intent intent){
-        super.onActivityResult(requestCode, resultCode, intent);
-        if(resultCode == Activity.RESULT_OK){
-            Uri selectedImage = image_Uri;
-            getContentResolver().notifyChange(selectedImage, null);
-
-            ImageView imageView = (ImageView) findViewById(R.id.img_replace);
-            ContentResolver cr = getContentResolver();
-            Bitmap bitmap;
-
-
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(cr, selectedImage);
-                imageView.setImageBitmap(bitmap);
-                Toast.makeText(MainActivity.this, " Photo Taken!", Toast.LENGTH_SHORT).show();
-            } catch (Exception e){
-
-            }
+        else  if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            img1.setImageBitmap(imageBitmap);
         }
     }
 }

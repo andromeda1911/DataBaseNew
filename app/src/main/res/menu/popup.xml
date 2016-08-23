@@ -3,6 +3,7 @@
 
     <item
         android:title="Gallery"
+
         android:id="@+id/popup_gallery"
         />
     <item
