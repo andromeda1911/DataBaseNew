@@ -121,7 +121,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
             Player p = new Player();
             p.setName("Employee" + i);
             p.setPos("Desig" + i);
-            p.setImg(R.drawable.ic_home);
+            p.setImg(R.drawable.contact);
             players.add(p);
         }
         return players;

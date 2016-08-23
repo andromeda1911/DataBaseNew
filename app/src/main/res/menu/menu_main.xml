@@ -4,8 +4,13 @@
     tools:context="com.example.nikhilsridhar.database.MainActivity">
 <group android:checkableBehavior="single">
 
+    <group android:id="@+id/grp0" android:checkableBehavior="single" >
+        <item
+            android:id="@+id/dummy"
+            android:title=""
 
-
+            />
+    </group>
     <group android:id="@+id/grp1" android:checkableBehavior="single" >
     <item
         android:id="@+id/edit_profile"

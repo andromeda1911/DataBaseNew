@@ -11,8 +11,8 @@
         android:id="@+id/img_replace"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:scaleType="fitXY"
-        android:src = "@drawable/ss"
+        android:scaleType="fitCenter"
+        android:src = "@drawable/schoolspeak"
         />
 
     <ImageButton

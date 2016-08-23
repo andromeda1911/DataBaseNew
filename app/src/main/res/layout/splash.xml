@@ -3,35 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#140000"
     >
 
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ss"
+        android:src="@drawable/ss_grey"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="App is loading"
-        android:textColor="#ABC"
-        android:id="@+id/textView4"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/text"
-        android:layout_alignEnd="@+id/text" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Please wait..."
-        android:textColor="#FFCC00"
-        android:id="@+id/text"
-        android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true" />
+
+
 
 </RelativeLayout>

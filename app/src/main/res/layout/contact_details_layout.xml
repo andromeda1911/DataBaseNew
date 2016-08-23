@@ -28,13 +28,15 @@
         android:layout_width="234dp"
         android:id="@+id/playerImage"
         android:padding="10dp"
-        android:scaleType="center"
+        android:scaleType="fitCenter"
         android:src="@mipmap/ic_launcher"
         android:layout_weight="0.42"
         android:layout_marginTop="88dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
     </ImageView>
+
+
 
 
     <TextView

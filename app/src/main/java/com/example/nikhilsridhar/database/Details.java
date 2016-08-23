@@ -132,7 +132,6 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         return super.onOptionsItemSelected(item);
     }
 
-
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch(item.getItemId()){
@@ -154,8 +153,6 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         img2 = (ImageView) findViewById(R.id.playerImage);
         img2.setImageResource(R.drawable.def);
     }
-
-
 
     private void Details_dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
