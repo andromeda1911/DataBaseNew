@@ -1,6 +1,13 @@
 package com.example.nikhilsridhar.database;
 
+import android.content.ClipData;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -27,6 +34,7 @@ import android.view.MenuItem;
 
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -41,14 +49,19 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     FragmentTransaction fragmentTransaction;
     Toolbar toolbar;
     ImageButton changeBg;
-
-
+    private static final int SELECTED_PICTURE =1;
+    ImageView iv;
     SearchView sv;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        iv = (ImageView) findViewById(R.id.img_replace);
+
 
      /*   changeBg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +122,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
     }
 
+
     @Override
 
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
@@ -157,6 +171,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
     public void showPopUp(View view){
         PopupMenu popup = new PopupMenu(this, view);
+        popup.setOnMenuItemClickListener(MainActivity.this);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.popup, popup.getMenu());
         popup.show();
@@ -165,12 +180,24 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        switch(item.getItemId()){
-            
+
+        switch(item.getItemId()) {
+            case R.id.popup_gallery:
+                Toast.makeText(getBaseContext(), "Click!", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.popup_cam:
+                Toast.makeText(getBaseContext(), "Click!", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.popup_remove:
+                Toast.makeText(getBaseContext(), "Click!", Toast.LENGTH_SHORT).show();
+                break;
+
+            default:
+                return false;
+
         }
-        return false;
-    }
-}
+            return false;
+}}
 
 
 
