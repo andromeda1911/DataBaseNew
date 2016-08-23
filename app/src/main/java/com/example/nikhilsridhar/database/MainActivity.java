@@ -1,6 +1,7 @@
 package com.example.nikhilsridhar.database;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -27,6 +28,7 @@ import android.view.MenuItem;
 
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -41,7 +43,9 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     FragmentTransaction fragmentTransaction;
     Toolbar toolbar;
     ImageButton changeBg;
-
+    private static final int PICK_IMAGE = 100;
+    ImageView img1;
+    Uri imageUri;
 
     SearchView sv;
 
@@ -49,23 +53,6 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-     /*   changeBg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PopupMenu popup = new PopupMenu(MainActivity.this, changeBg);
-                popup.getMenuInflater().inflate(R.menu.popup, popup.getMenu());
-
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    public boolean onMenuItemClick(MenuItem item) {
-                        Toast.makeText(MainActivity.this,"You Clicked : " + item.getTitle(),Toast.LENGTH_SHORT).show();
-                        return true;
-                    }
-                });
-
-                popup.show();
-            }
-        }); */
 
 
 
@@ -110,6 +97,14 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     }
 
     @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    @Override
 
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -135,28 +130,10 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
     }
 
-   /* @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        changeBg = (ImageButton) findViewById(R.id.changeBg);
-        switch(item.getItemId()){
-            case R.id.changeBg:
-
-                Toast.makeText(getApplicationContext(), "Photo", Toast.LENGTH_SHORT).show();
-                return true;
-
-            case R.id.change_pass:
-
-                Toast.makeText(getApplicationContext(), "Change password", Toast.LENGTH_SHORT).show();
-                return true;
-
-            default: return super.onOptionsItemSelected(item);
-        }
-
-
-        } */
 
     public void showPopUp(View view){
         PopupMenu popup = new PopupMenu(this, view);
+        popup.setOnMenuItemClickListener(this);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.popup, popup.getMenu());
         popup.show();
@@ -166,9 +143,28 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch(item.getItemId()){
+            case R.id.popup_gallery:
+                openGallery();
+                break;
             
         }
         return false;
+    }
+
+    private void openGallery(){
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
+
+    }
+    @Override
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        img1 = (ImageView) findViewById(R.id.img_replace);
+;                super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE ){
+            imageUri = data.getData();
+            img1.setImageURI(imageUri);
+        }
     }
 }
 

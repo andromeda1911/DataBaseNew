@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/DataBase.iml" filepath="$PROJECT_DIR$/DataBase.iml" />
       <module fileurl="file://$PROJECT_DIR$/DataBaseNew.iml" filepath="$PROJECT_DIR$/DataBaseNew.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
