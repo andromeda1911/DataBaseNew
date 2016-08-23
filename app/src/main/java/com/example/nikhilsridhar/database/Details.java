@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -37,7 +38,7 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
     private Uri imageUri;
     private static final int DETAILS_PICK_IMAGE = 100;
     static final int DETAILS_REQUEST_IMAGE_CAPTURE = 1;
-
+    private CollapsingToolbarLayout collapsingToolbarLayout = null;
 
 
     @Override
@@ -46,17 +47,19 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         setContentView(R.layout.contact_details_layout);
 
 
-        imageView = (ImageView) findViewById(R.id.playerImage);
-        tx_name   = (TextView) findViewById(R.id.nameTxt);
-        tx_pos    = (TextView) findViewById(R.id.posTxt);
-        imageView.setImageResource(getIntent().getIntExtra("img_id", 00));
-        tx_name.setText("Name : "+ getIntent().getIntExtra("nm", 00));
-        tx_pos.setText("Position"+ getIntent().getIntExtra("ps", 00));
+            imageView = (ImageView) findViewById(R.id.playerImage);
+            tx_name   = (TextView) findViewById(R.id.nameTxt);
+            tx_pos    = (TextView) findViewById(R.id.posTxt);
+            imageView.setImageResource(getIntent().getIntExtra("img_id", 00));
+            tx_name.setText("Name : "+ getIntent().getIntExtra("nm", 00));
+            tx_pos.setText("Position"+ getIntent().getIntExtra("ps", 00));
 
         my_toolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(my_toolbar);
         getSupportActionBar().setTitle(null);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        toolbarTextAppearnce();
 
 
     /*    Button cameraButton = (Button) findViewById(R.id.button_camera);
@@ -102,6 +105,13 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
             }
         }
     } */
+
+    private void toolbarTextAppearnce() {
+        collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
+        collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
