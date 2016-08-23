@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +14,10 @@
     tools:context="com.example.nikhilsridhar.database.Details"
     android:orientation="vertical"
     android:weightSum="1"
-    android:fitsSystemWindows="true">
+    android:background="#E5E5E5"
+    android:fitsSystemWindows="true"
+    android:isScrollContainer="true"
+    >
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolBar"
@@ -28,14 +34,82 @@
         android:layout_width="234dp"
         android:id="@+id/playerImage"
         android:padding="10dp"
-        android:scaleType="fitCenter"
+        android:scaleType="centerInside"
         android:src="@mipmap/ic_launcher"
-        android:layout_weight="0.42"
-        android:layout_marginTop="88dp"
+
+        android:layout_gravity="center"
+
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
     </ImageView>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Designation"
+        android:paddingTop="5dp"
+        android:textSize="14dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textVisiblePassword"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skills"
+        android:textSize="14dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textVisiblePassword"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interests"
+        android:textSize="14dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textVisiblePassword"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textSize="14dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textVisiblePassword"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact"
+        android:textSize="14dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textVisiblePassword"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blood Group"
+        android:textSize="14dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textVisiblePassword"
+        />
 
 
 
@@ -72,4 +146,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="49dp" />
 
-</RelativeLayout>
+</LinearLayout>
+</ScrollView>
