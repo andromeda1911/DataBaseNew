@@ -30,7 +30,10 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".Login" />
-        <activity android:name=".Details" />
+        <activity android:name=".Details"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            />
+
         <activity android:name=".Register" />
     </application>
 

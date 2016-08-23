@@ -1,6 +1,7 @@
 package com.example.nikhilsridhar.database;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -46,7 +47,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     private static final int PICK_IMAGE = 100;
     ImageView img1;
     Uri imageUri;
-
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     SearchView sv;
 
     @Override
@@ -120,14 +121,10 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
             Player p = new Player();
             p.setName("Employee" + i);
             p.setPos("Desig" + i);
-            p.setImg(R.drawable.emp);
+            p.setImg(R.drawable.ic_home);
             players.add(p);
         }
-
-
         return players;
-
-
     }
 
 
@@ -140,15 +137,37 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     }
 
 
+
+
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch(item.getItemId()){
             case R.id.popup_gallery:
                 openGallery();
                 break;
-            
+            case R.id.popup_cam:
+                dispatchTakePictureIntent();
+                break;
+            case R.id.popup_remove:
+                removeImage();
+                break;
+
         }
         return false;
+    }
+
+    private void removeImage(){
+        img1 = (ImageView) findViewById(R.id.img_replace);
+        img1.setImageResource(R.drawable.def);
+    }
+
+
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
     }
 
     private void openGallery(){
@@ -164,6 +183,11 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         if(resultCode == RESULT_OK && requestCode == PICK_IMAGE ){
             imageUri = data.getData();
             img1.setImageURI(imageUri);
+        }
+        else  if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            img1.setImageBitmap(imageBitmap);
         }
     }
 }

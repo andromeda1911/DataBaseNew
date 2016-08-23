@@ -6,31 +6,32 @@
 
 
 
-
+    <group android:id="@+id/grp1" android:checkableBehavior="single" >
     <item
         android:id="@+id/edit_profile"
         android:title="Edit Profile"
-        android:icon="@drawable/cam"/>
-
+        android:icon="@drawable/edit"/>
+    </group>
+    <group android:id="@+id/grp2" android:checkableBehavior="single" >
     <item
         android:id="@+id/change_pass"
         android:title="Change Password"
-        android:icon="@drawable/cam"/>
+        android:icon="@drawable/cp"/>
+    </group>
 
-
+    <group android:id="@+id/grp3" android:checkableBehavior="single" >
     <item
         android:id="@+id/delete"
         android:title="Delete profile"
-        android:icon="@drawable/cam"/>
+        android:icon="@drawable/del"/>
+    </group>
 
-    <item
-        android:id="@+id/un_reg"
-        android:title="Un-Register"
-        android:icon="@drawable/cam"/>
+    <group android:id="@+id/grp4" android:checkableBehavior="single" >
     <item
         android:id="@+id/sign_out"
         android:title="Signout"
-        android:icon="@drawable/cam"/>
+        android:icon="@drawable/so"/>
+    </group>
 
 
 
