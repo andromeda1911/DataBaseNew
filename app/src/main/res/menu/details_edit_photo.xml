@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Gallery"
+        android:id="@+id/details_popup_gallery"
+        />
+    <item
+        android:title="Camera"
+        android:id="@+id/details_popup_cam"
+        />
+
+    <item
+        android:title="Remove photo"
+        android:id="@+id/details_popup_remove"
+        />
+
+
+</menu>

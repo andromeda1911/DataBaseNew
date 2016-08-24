@@ -20,20 +20,21 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
-
                 android:src="@mipmap/ic_launcher"
                 android:id="@+id/playerImage"
                 app:layout_collapseMode="parallax" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Name"
                 android:id="@+id/nameTxt"
+
                 android:padding="10dp"
-                android:visibility="invisible"
-                android:layout_below="@+id/playerImage"
-                android:layout_alignLeft="@+id/posTxt"
-                android:layout_alignStart="@+id/posTxt" />
+                android:layout_gravity="bottom"
+                android:textSize="20dp"
+                />
+
 
 
             <TextView
@@ -58,6 +59,8 @@
                 android:layout_marginTop="49dp" />
 
 
+
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolBar"
                 android:layout_width="match_parent"
@@ -78,15 +81,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="10dp">
+            android:paddingTop="0dp"
+            android:paddingBottom="20dp"
+            >
+
+
 
             <include layout="@layout/card_layout" />
 
-
-
         </LinearLayout>
-
-
     </android.support.v4.widget.NestedScrollView>
-
 </android.support.design.widget.CoordinatorLayout>

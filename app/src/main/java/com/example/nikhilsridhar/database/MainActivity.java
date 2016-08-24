@@ -57,6 +57,8 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
 
 
+
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         sv = (SearchView) findViewById(R.id.mSearch);
@@ -121,7 +123,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
             Player p = new Player();
             p.setName("Employee" + i);
             p.setPos("Desig" + i);
-            p.setImg(R.drawable.contact);
+            p.setImg(R.drawable.defaultemp);
             players.add(p);
         }
         return players;

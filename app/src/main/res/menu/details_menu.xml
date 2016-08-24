@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/miCompose"
+        android:icon="@drawable/create1"
+        app:showAsAction="ifRoom"
+        android:title="Compose"
+        >
+    </item>
+    <item
+        android:id="@+id/miSettings"
+        android:icon="@drawable/vert1"
+        app:showAsAction="ifRoom|withText"
+        android:title="Profile">
+    </item>
+</menu>
