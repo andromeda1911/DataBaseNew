@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
+import android.transition.TransitionInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -45,6 +47,12 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(Build.VERSION.SDK_INT >= 21){
+            getWindow().setSharedElementExitTransition(TransitionInflater.from(this).inflateTransition(R.transition.shared_transition_element));
+        }
+
+
         setContentView(R.layout.contact_details_layout);
 
 
@@ -193,10 +201,14 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         }
     }
 
-    public void click(View ex){
-        ImageView exp = (ImageView) findViewById(R.id.playerImage);
+    public void click(View qwe){
+
+
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, qwe, "transitionname");
         Intent intent = new Intent(this, ExpandImage.class);
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, exp, "transitionname");
+
         startActivity(intent, options.toBundle());
     }
+
+
 }
