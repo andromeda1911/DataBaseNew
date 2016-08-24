@@ -33,6 +33,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
         this.ps = (TextView) itemView.findViewById(R.id.posTxt);
         itemView.setOnClickListener(this);
 
+
     }
 
     @Override
@@ -45,7 +46,6 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
         intent.putExtra("nm", player.getName());
         intent.putExtra("pos", player.getPos());
         this.ctx.startActivity(intent);
-
     }
 
 }

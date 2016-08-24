@@ -44,14 +44,22 @@
         android:layout_height="wrap_content" />
 
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFB41E"
+    >
     <Button
         android:id="@+id/bLogin"
         android:text="LOGIN"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:textColor="#080705"
         android:layout_height="wrap_content"
-        android:background="#d5edff" />
+        android:backgroundTint="#FFC145"
+         />
+
+</LinearLayout>
 
     <TextView
         style="?android:attr/buttonStyleSmall"

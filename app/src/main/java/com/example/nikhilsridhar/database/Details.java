@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -51,8 +52,8 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
             tx_name   = (TextView) findViewById(R.id.nameTxt);
             tx_pos    = (TextView) findViewById(R.id.posTxt);
             imageView.setImageResource(getIntent().getIntExtra("img_id", 00));
-            tx_name.setText("Name : "+ getIntent().getIntExtra("nm", 00));
-            tx_pos.setText("Position"+ getIntent().getIntExtra("ps", 00));
+            tx_name.setText(""+ getIntent().getStringExtra("nm"));
+            tx_pos.setText("Position"+ getIntent().getStringExtra("ps"));
 
         my_toolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(my_toolbar);
@@ -190,5 +191,12 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             img2.setImageBitmap(imageBitmap);
         }
+    }
+
+    public void click(View ex){
+        ImageView exp = (ImageView) findViewById(R.id.playerImage);
+        Intent intent = new Intent(this, ExpandImage.class);
+        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, exp, "transitionname");
+        startActivity(intent, options.toBundle());
     }
 }

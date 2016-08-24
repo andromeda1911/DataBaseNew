@@ -46,6 +46,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
         holder.img.setImageResource(players.get(position).getImg());
 
 
+
+
     }
 
     @Override

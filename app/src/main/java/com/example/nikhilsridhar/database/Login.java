@@ -56,6 +56,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 if(us >6 && pswrd >6){
                     Intent i = new Intent(Login.this, MainActivity.class);
                     startActivity(i);
+                    overridePendingTransition(R.anim.push_up_in, R.anim.push_up_in);
                     break;
                 }
                 else
