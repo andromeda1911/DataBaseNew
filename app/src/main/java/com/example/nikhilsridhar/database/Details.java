@@ -42,26 +42,40 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
     private static final int DETAILS_PICK_IMAGE = 100;
     static final int DETAILS_REQUEST_IMAGE_CAPTURE = 1;
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
+    private TextView tv;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if(Build.VERSION.SDK_INT >= 21){
-            getWindow().setSharedElementExitTransition(TransitionInflater.from(this).inflateTransition(R.transition.shared_transition_element));
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setSharedElementEnterTransition(TransitionInflater.from(this).inflateTransition(R.transition.shared_transition_element));
         }
 
 
         setContentView(R.layout.contact_details_layout);
 
+         tv = (TextView) findViewById(R.id.tv_Phone);
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_DIAL);
+                String p = "tel:" + tv.getText().toString();
+                i.setData(Uri.parse(p));
+                startActivity(i);
+            }
+        });
 
-            imageView = (ImageView) findViewById(R.id.playerImage);
-            tx_name   = (TextView) findViewById(R.id.nameTxt);
-            tx_pos    = (TextView) findViewById(R.id.posTxt);
-            imageView.setImageResource(getIntent().getIntExtra("img_id", 00));
-            tx_name.setText(""+ getIntent().getStringExtra("nm"));
-            tx_pos.setText("Position"+ getIntent().getStringExtra("ps"));
+
+
+
+        imageView = (ImageView) findViewById(R.id.playerImage);
+        tx_name = (TextView) findViewById(R.id.nameTxt);
+        tx_pos = (TextView) findViewById(R.id.posTxt);
+        imageView.setImageResource(getIntent().getIntExtra("img_id", 00));
+        tx_name.setText("" + getIntent().getStringExtra("nm"));
+        tx_pos.setText("Position" + getIntent().getStringExtra("ps"));
 
         my_toolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(my_toolbar);
@@ -121,7 +135,6 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -136,8 +149,7 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
                 finish();
                 return true;
 
-            case R.id.miCompose:
-            {
+            case R.id.miCompose: {
                 View menuItemView = findViewById(R.id.miCompose);
                 PopupMenu popupMenu = new PopupMenu(this, menuItemView);
                 popupMenu.setOnMenuItemClickListener(this);
@@ -153,7 +165,7 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.details_popup_gallery:
                 Details_openGallery();
                 break;
@@ -168,7 +180,7 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         return false;
     }
 
-    private void Details_removeImage(){
+    private void Details_removeImage() {
         img2 = (ImageView) findViewById(R.id.playerImage);
         img2.setImageResource(R.drawable.def);
     }
@@ -180,28 +192,29 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         }
     }
 
-    private void Details_openGallery(){
+    private void Details_openGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(gallery, DETAILS_PICK_IMAGE);
 
     }
+
     @Override
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         img2 = (ImageView) findViewById(R.id.playerImage);
-        ;                super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == DETAILS_PICK_IMAGE ){
+        ;
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == DETAILS_PICK_IMAGE) {
             imageUri = data.getData();
             img2.setImageURI(imageUri);
-        }
-        else  if (requestCode == DETAILS_REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+        } else if (requestCode == DETAILS_REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             img2.setImageBitmap(imageBitmap);
         }
     }
 
-    public void click(View qwe){
+    public void animation(View qwe) {
 
 
         ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, qwe, "transitionname");

@@ -32,6 +32,7 @@
             android:background="?android:attr/selectableItemBackground"
             android:layout_toRightOf="@+id/playerImage"
             android:paddingLeft="5dp"
+
             android:paddingTop="5dp"
             >
 

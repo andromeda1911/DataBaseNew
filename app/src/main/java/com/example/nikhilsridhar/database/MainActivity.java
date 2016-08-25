@@ -56,13 +56,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
-
-
-
-
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,7 +65,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         rv.setHasFixedSize(false);
 
         rv.setLayoutManager(new LinearLayoutManager(this));
-
+        rv.setItemAnimator(new DefaultItemAnimator());
 
         final MyAdapter adapter = new MyAdapter(this, getPlayers());
         rv.setAdapter(adapter);
@@ -89,9 +83,6 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
                 return false;
             }
         });
-
-
-
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
 
@@ -198,14 +189,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         }
     }
 
-    public void animation(View qwe){
 
-
-        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, qwe, "transitionname");
-        Intent intent = new Intent(this, Details.class);
-
-        startActivity(intent, options.toBundle());
-    }
 
 }
 
