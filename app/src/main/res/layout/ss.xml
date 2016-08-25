@@ -54,9 +54,9 @@
         android:text="LOGIN"
         android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
-        android:textColor="#080705"
+        android:textColor="#3056AD"
         android:layout_height="wrap_content"
-        android:backgroundTint="#FFC145"
+        android:backgroundTint="#FFFFFF"
          />
 
 </LinearLayout>

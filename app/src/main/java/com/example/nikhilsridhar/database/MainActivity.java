@@ -109,8 +109,6 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         super.onPostCreate(savedInstanceState);
         actionBarDrawerToggle.syncState();
     }
-
-
     private ArrayList<Player> getPlayers() {
 
 

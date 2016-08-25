@@ -42,7 +42,7 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
     private static final int DETAILS_PICK_IMAGE = 100;
     static final int DETAILS_REQUEST_IMAGE_CAPTURE = 1;
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
-    private TextView tv;
+    private TextView tv, address;
 
 
     @Override
@@ -55,6 +55,17 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
 
         setContentView(R.layout.contact_details_layout);
+
+        address = (TextView) findViewById(R.id.contact_address);
+        address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = null;
+                intent = new Intent(android.content.Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("geo:51.076, 5.8777"));
+                startActivity(intent);
+            }
+        });
 
          tv = (TextView) findViewById(R.id.tv_Phone);
         tv.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +94,8 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         toolbarTextAppearnce();
+
+
 
 
     /*    Button cameraButton = (Button) findViewById(R.id.button_camera);
