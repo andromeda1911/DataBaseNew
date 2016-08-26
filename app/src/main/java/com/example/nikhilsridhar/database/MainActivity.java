@@ -1,5 +1,6 @@
 package com.example.nikhilsridhar.database;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,9 +35,11 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.logging.Handler;
 import java.util.zip.Inflater;
 
 public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
@@ -44,7 +48,6 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationView;
-    FragmentTransaction fragmentTransaction;
     Toolbar toolbar;
     ImageButton changeBg;
     private static final int PICK_IMAGE = 100;
@@ -52,11 +55,16 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     Uri imageUri;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     SearchView sv;
+    FragmentTransaction fragmentTransaction;
+    public static ArrayList<Player> players;
+    public static MyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        players = new ArrayList<>();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,9 +75,8 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setItemAnimator(new DefaultItemAnimator());
 
-        final MyAdapter adapter = new MyAdapter(this, getPlayers());
+        adapter = new MyAdapter(this, getPlayers());
         rv.setAdapter(adapter);
-
 
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -85,11 +92,38 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         });
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
-
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
-
-
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+
+                switch(item.getItemId()){
+                    case R.id.edit_profile:
+                        Intent a = new Intent(MainActivity.this, EditProfile.class);
+                        startActivity(a);
+                        break;
+
+                    case R.id.change_pass:
+                        Intent b = new Intent(MainActivity.this, ChangePassword.class);
+                        startActivity(b);
+                        break;
+
+                    case R.id.delete:
+                    {
+                        deleteProfile();
+                        break;
+                    }
+                    case R.id.sign_out:
+                        signOut();
+                        break;
+                }
+
+                return false;
+            }
+        });
 
 
 
@@ -132,8 +166,56 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         popup.show();
     }
 
+    public void deleteProfile(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        builder.setTitle("Confirm");
+        builder.setMessage("Are you sure?");
 
+        builder.setPositiveButton("NO", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+
+        });
+
+        builder.setNegativeButton("YES", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Intent b = new Intent(MainActivity.this, Login.class);
+                startActivity(b);
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+        public void signOut(){
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setMessage("Signing out...");
+            alertDialog.show();
+
+            Thread t = new Thread(){
+            @Override
+            public void run(){
+                try {
+                    sleep(2000);
+                    Intent startMainScreen = new Intent(getApplicationContext(), Login.class);
+                    startActivity(startMainScreen);
+                    finish();
+                }
+                catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+            };
+            t.start();
+            }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
@@ -186,9 +268,6 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
             img1.setImageBitmap(imageBitmap);
         }
     }
-
-
-
 }
 
 

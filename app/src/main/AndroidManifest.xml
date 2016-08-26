@@ -34,7 +34,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Register" />
         <activity android:name=".ExpandImage" />
-
+        <activity android:name=".EditProfile" />
+        <activity android:name=".ChangePassword" />
+        <activity android:name=".DeleteProfile"></activity>
     </application>
 
 </manifest>

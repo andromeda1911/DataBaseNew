@@ -11,6 +11,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.FragmentTransaction;
@@ -80,6 +81,17 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
 
 
+        FloatingActionButton b = (FloatingActionButton) findViewById(R.id.fab);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    MyAdapter adapter = null;
+                    Player p = new Player();
+                    MainActivity.players.add(p);
+                    Toast.makeText(getApplication(), "New contact added", Toast.LENGTH_SHORT).show();
+                    adapter.notifyDataSetChanged();
+            }
+        });
 
         imageView = (ImageView) findViewById(R.id.playerImage);
         tx_name = (TextView) findViewById(R.id.nameTxt);
@@ -95,10 +107,7 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         toolbarTextAppearnce();
 
-
-
-
-    /*    Button cameraButton = (Button) findViewById(R.id.button_camera);
+        /*    Button cameraButton = (Button) findViewById(R.id.button_camera);
         cameraButton.setOnClickListener(cameraListener); */
 
     }
@@ -235,6 +244,4 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
         startActivity(intent, options.toBundle());
     }
-
-
 }
