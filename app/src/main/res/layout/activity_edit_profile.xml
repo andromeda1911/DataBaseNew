@@ -24,6 +24,7 @@
      android:textSize="18dp"
      />
     <EditText
+        android:id="@+id/editName"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="180dp"
@@ -38,6 +39,7 @@
         android:textSize="18dp"
         />
     <EditText
+        android:id="@+id/editDesig"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="180dp"
@@ -53,6 +55,7 @@
         android:textSize="18dp"
         />
     <EditText
+        android:id="@+id/editEmail"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="180dp"

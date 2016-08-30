@@ -143,10 +143,9 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         super.onPostCreate(savedInstanceState);
         actionBarDrawerToggle.syncState();
     }
+
     private ArrayList<Player> getPlayers() {
 
-
-        ArrayList<Player> players = new ArrayList<>();
         for (int i = 0; i < 15; i++) {
             Player p = new Player();
             p.setName("Employee" + i);
@@ -175,7 +174,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         builder.setPositiveButton("NO", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
+
                 dialog.dismiss();
             }
 
@@ -185,7 +184,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
                 Intent b = new Intent(MainActivity.this, Login.class);
                 startActivity(b);
             }

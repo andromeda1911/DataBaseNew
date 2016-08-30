@@ -93,6 +93,7 @@
             android:orientation="vertical"
             android:paddingTop="0dp"
             android:paddingBottom="10dp"
+            android:id="@+id/viewA"
             >
 
 
@@ -104,5 +105,10 @@
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
-
+    <include layout="@layout/floating_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@+id/playerImage"
+        app:layout_anchorGravity="bottom|right|end"
+        />
 </android.support.design.widget.CoordinatorLayout>

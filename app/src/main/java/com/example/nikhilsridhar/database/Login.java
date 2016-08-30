@@ -60,7 +60,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     break;
                 }
                 else
-                    Toast.makeText(this, "Min 6 characters for username & password without spaces", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Min 7 characters for username & password without spaces", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.bReg:

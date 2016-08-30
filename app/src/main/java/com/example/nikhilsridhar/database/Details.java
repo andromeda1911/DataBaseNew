@@ -85,11 +85,14 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    MyAdapter adapter = null;
+
                     Player p = new Player();
+                    p.setName("EmpNew");
+                    p.setPos("DesigNew");
+                    p.setImg(R.drawable.defaultemp);
                     MainActivity.players.add(p);
                     Toast.makeText(getApplication(), "New contact added", Toast.LENGTH_SHORT).show();
-                    adapter.notifyDataSetChanged();
+                    MainActivity.adapter.notifyDataSetChanged();
             }
         });
 
