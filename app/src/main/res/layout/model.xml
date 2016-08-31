@@ -29,6 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:orientation="vertical"
+            android:transitionName="anime"
+            android:onClick="clickView"
             android:background="?android:attr/selectableItemBackground"
             android:layout_toRightOf="@+id/playerImage"
             android:paddingLeft="5dp"

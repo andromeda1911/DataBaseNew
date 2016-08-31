@@ -115,6 +115,9 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         toolbarTextAppearnce();
 
+
+
+
         /*    Button cameraButton = (Button) findViewById(R.id.button_camera);
         cameraButton.setOnClickListener(cameraListener); */
 

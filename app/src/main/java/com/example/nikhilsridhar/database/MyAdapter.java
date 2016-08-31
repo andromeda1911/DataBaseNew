@@ -73,8 +73,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
         return filter;
     }
     public static void animate( RecyclerView.ViewHolder holder, boolean goesDown){
-        ObjectAnimator animatorTranslateY = ObjectAnimator.ofFloat(holder.itemView, "translationY", goesDown==true?50:-50,0);
-        animatorTranslateY.setDuration(500);
+        ObjectAnimator animatorTranslateY = ObjectAnimator.ofFloat(holder.itemView, "translationY", goesDown==true?10:-10,0);
+        animatorTranslateY.setDuration(250);
         animatorTranslateY.start();
     }
 

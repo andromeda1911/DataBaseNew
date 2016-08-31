@@ -15,12 +15,14 @@
     <item
         android:id="@+id/edit_profile"
         android:title="Edit Profile"
+        android:textColor="#112B89"
         android:icon="@drawable/edit"/>
     </group>
     <group android:id="@+id/grp2" android:checkableBehavior="single" >
     <item
         android:id="@+id/change_pass"
         android:title="Change Password"
+        android:textColor="#112B89"
         android:icon="@drawable/cp"/>
     </group>
 
@@ -28,6 +30,7 @@
     <item
         android:id="@+id/delete"
         android:title="Delete profile"
+        android:textColor="#112B89"
         android:icon="@drawable/del"/>
     </group>
 
@@ -35,6 +38,7 @@
     <item
         android:id="@+id/sign_out"
         android:title="Signout"
+        android:textColor="#112B89"
         android:icon="@drawable/so"/>
     </group>
 
