@@ -59,7 +59,6 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
         super.onCreate(savedInstanceState);
 
 
-
         setContentView(R.layout.contact_details_layout);
 
         address = (TextView) findViewById(R.id.contact_address);

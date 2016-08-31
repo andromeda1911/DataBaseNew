@@ -109,7 +109,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
 
-                switch(item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.edit_profile:
                         Intent a = new Intent(MainActivity.this, EditProfile.class);
                         startActivity(a);
@@ -120,8 +120,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
                         startActivity(b);
                         break;
 
-                    case R.id.delete:
-                    {
+                    case R.id.delete: {
                         deleteProfile();
                         break;
                     }
@@ -136,7 +135,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -163,7 +162,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     }
 
 
-    public void showPopUp(View view){
+    public void showPopUp(View view) {
         PopupMenu popup = new PopupMenu(this, view);
         popup.setOnMenuItemClickListener(this);
         MenuInflater inflater = popup.getMenuInflater();
@@ -171,7 +170,7 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         popup.show();
     }
 
-    public void deleteProfile(){
+    public void deleteProfile() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle("Confirm");
@@ -200,31 +199,30 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         alert.show();
     }
 
-        public void signOut(){
-            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-            alertDialog.setMessage("Signing out...");
-            alertDialog.show();
+    public void signOut() {
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setMessage("Signing out...");
+        alertDialog.show();
 
-            Thread t = new Thread(){
+        Thread t = new Thread() {
             @Override
-            public void run(){
+            public void run() {
                 try {
                     sleep(2000);
                     Intent startMainScreen = new Intent(getApplicationContext(), Login.class);
                     startActivity(startMainScreen);
                     finish();
-                }
-                catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-            };
-            t.start();
-            }
+        };
+        t.start();
+    }
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.popup_gallery:
                 openGallery();
                 break;
@@ -239,11 +237,10 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         return false;
     }
 
-    private void removeImage(){
+    private void removeImage() {
         img1 = (ImageView) findViewById(R.id.img_replace);
         img1.setImageResource(R.drawable.def);
     }
-
 
 
     private void dispatchTakePictureIntent() {
@@ -253,21 +250,22 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
         }
     }
 
-    private void openGallery(){
+    private void openGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);
 
     }
+
     @Override
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         img1 = (ImageView) findViewById(R.id.img_replace);
-;                super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK && requestCode == PICK_IMAGE ){
+        ;
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             imageUri = data.getData();
             img1.setImageURI(imageUri);
-        }
-        else  if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+        } else if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             img1.setImageBitmap(imageBitmap);
@@ -275,15 +273,13 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
     }
 
 
+    public void clickView(final View vx) {
 
-    public void clickView(View vx){
-
-        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this, vx, "anime" );
+        ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this, vx, "anime");
         Intent intent = new Intent(this, Details.class);
 
         startActivity(intent, optionsCompat.toBundle());
     }
-
 }
 
 

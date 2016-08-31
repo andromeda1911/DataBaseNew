@@ -18,7 +18,8 @@
         android:padding="5dp"
         android:clickable="true"
         android:focusable="true"
-        android:background="?android:selectableItemBackground"
+
+        android:background="#E5E5E5"
         >
 
 

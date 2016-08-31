@@ -31,6 +31,7 @@
                 android:src="@drawable/defaultemp"
                 android:transitionName="transitionname"
                 android:onClick="animation"
+
                 android:id="@+id/playerImage"
                 app:layout_collapseMode="parallax"
 
@@ -43,9 +44,9 @@
                 android:textStyle="bold"
                 android:textColor="#ffe5e5e5"
                 android:padding="10dp"
-                android:transitionName="anime"
                 android:layout_gravity="bottom"
                 android:textSize="20dp"
+                android:transitionName="anime"
                 />
 
             <TextView
@@ -94,7 +95,6 @@
         android:layout_height="match_parent"
         android:background="#ffe5e5e5"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-
         >
 
 
@@ -109,12 +109,6 @@
             android:paddingBottom="10dp"
             android:id="@+id/viewA"
             >
-
-
-
-
-
-
             <include layout="@layout/card_layout" />
 
 
@@ -129,14 +123,9 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       app:layout_anchor="@id/app_bar"
+        app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|right|end"
-
         android:src="@android:drawable/ic_input_add"
-
-
-
-
         />
 
 
