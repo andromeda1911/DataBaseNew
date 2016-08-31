@@ -18,7 +18,7 @@
         android:text="Username"
         android:id="@+id/usr"
         android:layout_height="wrap_content"
-        android:textColor="#E3C16F"
+        android:textColor="#112B89"
         />
 
 
@@ -26,20 +26,20 @@
         android:id="@+id/etUsername"
         android:inputType="textVisiblePassword"
         android:layout_width="match_parent"
-        android:textColor="#E3C16F"
+        android:textColor="#449DD1"
         android:layout_height="wrap_content" />
 
     <TextView
         android:layout_width="wrap_content"
         android:id="@+id/pass"
         android:text="Password"
-        android:textColor="#E3C16F"
+        android:textColor="#112B89"
         android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/etPassword"
         android:inputType="textPassword"
-        android:textColor="#E3C16F"
+        android:textColor="#449DD1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -47,14 +47,14 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFB41E"
+    android:background="#112B89"
     >
     <Button
         android:id="@+id/bLogin"
         android:text="LOGIN"
         android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
-        android:textColor="#3056AD"
+        android:textColor="#FDFFFC"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
          />

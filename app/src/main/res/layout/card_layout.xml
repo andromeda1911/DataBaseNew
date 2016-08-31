@@ -6,6 +6,8 @@
     >
 
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Designation"
+            android:textColor="#112B89"
             android:textStyle="bold"
             android:textSize="16sp"
             android:paddingBottom="2dp"
@@ -26,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Manager"
+            android:textColor="#449DD1"
             android:paddingLeft="5dp"
             android:textSize="12sp"
             android:paddingBottom="10dp"
@@ -35,12 +39,14 @@
             android:textStyle="bold"
             android:layout_height="wrap_content"
             android:text="Skills"
+            android:textColor="#112B89"
             android:textSize="16sp"
             android:paddingBottom="2dp"
             />
 
         <TextView
             android:layout_width="match_parent"
+            android:textColor="#449DD1"
             android:layout_height="wrap_content"
             android:text="Design, Management, Analytics"
             android:paddingLeft="5dp"
@@ -53,12 +59,14 @@
             android:textStyle="bold"
             android:layout_height="wrap_content"
             android:text="Interests"
+            android:textColor="#112B89"
             android:textSize="16sp"
             android:paddingBottom="2dp"
             />
 
         <TextView
             android:layout_width="match_parent"
+            android:textColor="#449DD1"
             android:layout_height="wrap_content"
             android:text="Technology,Sports, Philosophy"
             android:paddingLeft="5dp"
@@ -71,12 +79,14 @@
             android:textStyle="bold"
             android:layout_height="wrap_content"
             android:text="Address"
+            android:textColor="#112B89"
             android:textSize="16sp"
             android:paddingBottom="2dp"
             />
 
         <TextView
             android:layout_width="match_parent"
+            android:textColor="#449DD1"
             android:layout_height="wrap_content"
             android:id="@+id/contact_address"
             android:clickable="true"
@@ -91,12 +101,14 @@
             android:textStyle="bold"
             android:layout_height="wrap_content"
             android:text="Contact"
+            android:textColor="#112B89"
             android:textSize="16sp"
             android:paddingBottom="2dp"
             />
 
         <TextView
             android:layout_width="match_parent"
+            android:textColor="#449DD1"
             android:layout_height="wrap_content"
             android:text="5551873201"
             android:id="@+id/tv_Phone"
@@ -109,6 +121,7 @@
         <TextView
             android:layout_width="match_parent"
             android:textStyle="bold"
+            android:textColor="#112B89"
             android:layout_height="wrap_content"
             android:text="Blood Group"
             android:textSize="16sp"
@@ -117,6 +130,7 @@
 
         <TextView
             android:layout_width="match_parent"
+            android:textColor="#449DD1"
             android:layout_height="wrap_content"
             android:text="AB -"
             android:paddingLeft="5dp"
@@ -127,6 +141,7 @@
         <TextView
             android:layout_width="match_parent"
             android:textStyle="bold"
+            android:textColor="#112B89"
             android:layout_height="wrap_content"
             android:text="Email Address"
             android:textSize="16sp"

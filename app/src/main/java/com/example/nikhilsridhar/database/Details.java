@@ -21,6 +21,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -48,11 +51,13 @@ public class Details extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Transition exitTrans = new Explode();
+        getWindow().setExitTransition(exitTrans);
+
+        Transition reenterTrans = new Explode();
+        getWindow().setReenterTransition(reenterTrans);
         super.onCreate(savedInstanceState);
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().setSharedElementEnterTransition(TransitionInflater.from(this).inflateTransition(R.transition.shared_transition_element));
-        }
 
 
         setContentView(R.layout.contact_details_layout);

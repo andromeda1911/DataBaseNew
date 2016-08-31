@@ -1,11 +1,13 @@
 package com.example.nikhilsridhar.database;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.transition.Explode;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,6 +48,7 @@ public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickLis
         intent.putExtra("nm", player.getName());
         intent.putExtra("pos", player.getPos());
         this.ctx.startActivity(intent);
+
     }
 
 }

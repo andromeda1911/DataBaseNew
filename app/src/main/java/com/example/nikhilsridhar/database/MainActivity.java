@@ -23,6 +23,9 @@ import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -61,7 +64,13 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Transition exitTrans = new Explode();
+        getWindow().setExitTransition(exitTrans);
+
+        Transition reenterTrans = new Explode();
+        getWindow().setReenterTransition(reenterTrans);
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         players = new ArrayList<>();
@@ -124,9 +133,6 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
                 return false;
             }
         });
-
-
-
     }
 
     @Override

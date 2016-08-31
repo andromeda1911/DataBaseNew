@@ -1,10 +1,20 @@
 package com.example.nikhilsridhar.database;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.transition.ChangeBounds;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionSet;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -25,7 +35,15 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Transition exitTrans = new Explode();
+        getWindow().setExitTransition(exitTrans);
+
+        Transition reenterTrans = new Explode();
+        getWindow().setReenterTransition(reenterTrans);
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.ss);
 
         usr               = (TextView) findViewById(R.id.usr);
@@ -54,9 +72,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 int us = etUsername.getText().length();
                 int pswrd = etPassword.getText().length();
                 if(us >6 && pswrd >6){
-                    Intent i = new Intent(Login.this, MainActivity.class);
-                    startActivity(i);
-                    overridePendingTransition(R.anim.push_up_in, R.anim.push_up_in);
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Login.this);
+                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    startActivity(intent, options.toBundle());
+
                     break;
                 }
                 else
