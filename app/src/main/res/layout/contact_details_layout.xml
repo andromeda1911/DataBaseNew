@@ -46,7 +46,7 @@
                 android:padding="10dp"
                 android:layout_gravity="bottom"
                 android:textSize="20dp"
-                android:transitionName="anime"
+
                 />
 
             <TextView
@@ -109,7 +109,9 @@
             android:paddingBottom="10dp"
             android:id="@+id/viewA"
             >
-            <include layout="@layout/card_layout" />
+            <include layout="@layout/card_layout"
+
+                />
 
 
 

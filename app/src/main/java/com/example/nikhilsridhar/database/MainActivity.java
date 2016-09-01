@@ -275,7 +275,9 @@ public  class MainActivity extends AppCompatActivity implements PopupMenu.OnMenu
 
     public void clickView(final View vx) {
 
+
         ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(this, vx, "anime");
+
         Intent intent = new Intent(this, Details.class);
 
         startActivity(intent, optionsCompat.toBundle());
